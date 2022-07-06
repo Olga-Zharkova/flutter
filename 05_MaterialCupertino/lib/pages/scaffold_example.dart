@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled2/pages/drawer_menu.dart';
+import 'package:untitled2/pages/end_drawer_menu.dart';
+import 'package:untitled2/pages/start_drawer_menu.dart';
 
 class TabItem {
   String title;
@@ -21,7 +22,8 @@ class ScaffoldExample extends StatefulWidget {
   State<ScaffoldExample> createState() => _ScaffoldExampleState();
 }
 
-class _ScaffoldExampleState extends State<ScaffoldExample> with SingleTickerProviderStateMixin{
+class _ScaffoldExampleState extends State<ScaffoldExample>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   PersistentBottomSheetController? _controller;
   bool _shouldShow = true;
@@ -33,10 +35,14 @@ class _ScaffoldExampleState extends State<ScaffoldExample> with SingleTickerProv
     super.initState();
     _tabController = TabController(length: _tabBar.length, vsync: this);
     _tabController.addListener(() {
-      setState((){
+      setState(() {
         _currentTabIndex = _tabController.index;
       });
     });
+  }
+
+  void openEndDrawer() {
+    scaffoldKey.currentState?.openEndDrawer();
   }
 
   void toggleBottomSheet() {
@@ -105,27 +111,25 @@ class _ScaffoldExampleState extends State<ScaffoldExample> with SingleTickerProv
               fontSize: 18,
             ),
           ),
+          centerTitle: true,
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.person, size: 35,)),
+            IconButton(
+                onPressed: openEndDrawer,
+                icon: const Icon(
+                  Icons.person,
+                  size: 35,
+                )),
           ],
         ),
       ),
-      drawer: DrawerMenu(),
-      endDrawer: DrawerMenu(
-
-      ),
+      drawer: const StartDrawerMenu(),
+      endDrawer: const EndDrawerMenu(),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          Container(
-            child: Text('1'),
-          ),
-          Container(
-            child: Text('2'),
-          ),
-          Container(
-            child: Text('3'),
-          ),
+        children: const [
+          Text('1'),
+          Text('2'),
+          Text('3'),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
