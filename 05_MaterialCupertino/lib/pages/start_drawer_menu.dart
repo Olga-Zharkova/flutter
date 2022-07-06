@@ -51,6 +51,45 @@ class StartDrawerMenu extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(Icons.arrow_forward, size: 40)),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: 80,
+                child: FloatingActionButton(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0)),
+                  onPressed: () {},
+                  backgroundColor: Colors.grey.shade200,
+                  child: const Text(
+                    'Выход',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 120,
+                child: FloatingActionButton(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0)),
+                  onPressed: () {},
+                  backgroundColor: Colors.grey.shade200,
+                  child: const Text(
+                    'Регистрация',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );
