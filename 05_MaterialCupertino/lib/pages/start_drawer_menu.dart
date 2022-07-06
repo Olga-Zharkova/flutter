@@ -13,10 +13,10 @@ class StartDrawerMenu extends StatelessWidget {
             children: [
               const DrawerHeader(
                   child: CircleAvatar(
-                    radius: 70,
-                    backgroundImage: NetworkImage(
-                        'https://www.itl.cat/pngfile/big/186-1861341_widescreen-road-scenery-hd.jpg'),
-                  )),
+                radius: 70,
+                backgroundImage: NetworkImage(
+                    'https://www.itl.cat/pngfile/big/186-1861341_widescreen-road-scenery-hd.jpg'),
+              )),
               ComponentsDrawer(
                 title: 'Home',
                 iconLeading: const Icon(Icons.home, size: 40),
@@ -49,6 +49,7 @@ class StartDrawerMenu extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ComponentsDrawer extends StatelessWidget {
   String title;
   Icon iconLeading;
@@ -70,6 +71,7 @@ class ComponentsDrawer extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ButtonDrawer extends StatelessWidget {
   String title;
   double width;
