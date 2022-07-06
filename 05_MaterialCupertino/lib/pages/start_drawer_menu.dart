@@ -9,14 +9,14 @@ class StartDrawerMenu extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const DrawerHeader(
-              child: CircleAvatar(
-            radius: 70,
-            backgroundImage: NetworkImage(
-                'https://www.itl.cat/pngfile/big/186-1861341_widescreen-road-scenery-hd.jpg'),
-          )),
           Column(
             children: [
+              const DrawerHeader(
+                  child: CircleAvatar(
+                    radius: 70,
+                    backgroundImage: NetworkImage(
+                        'https://www.itl.cat/pngfile/big/186-1861341_widescreen-road-scenery-hd.jpg'),
+                  )),
               ComponentsDrawer(
                 title: 'Home',
                 iconLeading: const Icon(Icons.home, size: 40),
