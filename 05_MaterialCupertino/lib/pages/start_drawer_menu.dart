@@ -17,40 +17,19 @@ class StartDrawerMenu extends StatelessWidget {
           )),
           Column(
             children: [
-              ListTile(
-                  title: Text(
-                    'Home',
-                    style: TextStyle(fontSize: 22, color: Colors.grey.shade600),
-                  ),
-                  leading: const Icon(Icons.home, size: 40),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_forward,
-                      size: 40,
-                    ),
-                  )),
-              const Padding(padding: EdgeInsets.only(top: 15)),
-              ListTile(
-                title: Text(
-                  'Profile',
-                  style: TextStyle(fontSize: 22, color: Colors.grey.shade600),
-                ),
-                leading: const Icon(Icons.person, size: 40),
-                trailing: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward, size: 40)),
+              ComponentsDrawer(
+                title: 'Home',
+                iconLeading: const Icon(Icons.home, size: 40),
               ),
               const Padding(padding: EdgeInsets.only(top: 15)),
-              ListTile(
-                title: Text(
-                  'Images',
-                  style: TextStyle(fontSize: 22, color: Colors.grey.shade600),
-                ),
-                leading: const Icon(Icons.image, size: 40),
-                trailing: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward, size: 40)),
+              ComponentsDrawer(
+                title: 'Profile',
+                iconLeading: const Icon(Icons.person, size: 40),
+              ),
+              const Padding(padding: EdgeInsets.only(top: 15)),
+              ComponentsDrawer(
+                title: 'Images',
+                iconLeading: const Icon(Icons.image, size: 40),
               ),
             ],
           ),
@@ -68,11 +47,33 @@ class StartDrawerMenu extends StatelessWidget {
   }
 }
 
+class ComponentsDrawer extends StatelessWidget {
+  String title;
+  Icon iconLeading;
+
+  ComponentsDrawer({Key? key, required this.title, required this.iconLeading})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 22, color: Colors.grey.shade600),
+      ),
+      leading: iconLeading,
+      trailing: IconButton(
+          onPressed: () {}, icon: const Icon(Icons.arrow_forward, size: 40)),
+    );
+  }
+}
 
 class ButtonDrawer extends StatelessWidget {
   String title;
   double width;
-  ButtonDrawer({Key? key, required this.title, required this.width}) : super(key: key);
+
+  ButtonDrawer({Key? key, required this.title, required this.width})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +81,7 @@ class ButtonDrawer extends StatelessWidget {
       width: width,
       child: FloatingActionButton(
         elevation: 1,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
         onPressed: () {},
         backgroundColor: Colors.grey.shade200,
         child: Text(
@@ -95,4 +95,3 @@ class ButtonDrawer extends StatelessWidget {
     );
   }
 }
-
