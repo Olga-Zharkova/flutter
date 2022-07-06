@@ -33,14 +33,16 @@ class StartDrawerMenu extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ButtonDrawer(title: 'Выход', width: 80),
-              ButtonDrawer(title: 'Регистрация', width: 120),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ButtonDrawer(title: 'Выход', width: 80),
+                ButtonDrawer(title: 'Регистрация', width: 120),
+              ],
+            ),
           ),
-          const Padding(padding: EdgeInsets.only(bottom: 1)),
         ],
       ),
     );
