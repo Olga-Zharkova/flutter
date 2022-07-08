@@ -9,35 +9,38 @@ class StartDrawerMenu extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              const DrawerHeader(
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: ListView(
+              children: const [
+                DrawerHeader(
                   child: CircleAvatar(
-                radius: 70,
-                backgroundImage: NetworkImage(
-                    'https://www.itl.cat/pngfile/big/186-1861341_widescreen-road-scenery-hd.jpg'),
-              )),
-              ComponentsDrawer(
-                title: 'Home',
-                iconLeading: const Icon(Icons.home, size: 40),
-              ),
-              const Padding(padding: EdgeInsets.only(top: 15)),
-              ComponentsDrawer(
-                title: 'Profile',
-                iconLeading: const Icon(Icons.person, size: 40),
-              ),
-              const Padding(padding: EdgeInsets.only(top: 15)),
-              ComponentsDrawer(
-                title: 'Images',
-                iconLeading: const Icon(Icons.image, size: 40),
-              ),
-            ],
+                    radius: 70,
+                    backgroundImage: NetworkImage(
+                        'https://www.itl.cat/pngfile/big/186-1861341_widescreen-road-scenery-hd.jpg'),
+                  ),
+                ),
+                ComponentsDrawer(
+                  title: 'Home',
+                  iconLeading: Icon(Icons.home, size: 40),
+                ),
+                ComponentsDrawer(
+                  title: 'Profile',
+                  iconLeading: Icon(Icons.person, size: 40),
+                ),
+                ComponentsDrawer(
+                  title: 'Images',
+                  iconLeading: Icon(Icons.image, size: 40),
+                ),
+              ],
+            ),
           ),
+          //кнопки регитстрации и выхода в начальном меню навигации
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
+              children: const [
                 ButtonDrawer(title: 'Выход', width: 80),
                 ButtonDrawer(title: 'Регистрация', width: 120),
               ],
@@ -49,12 +52,12 @@ class StartDrawerMenu extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
 class ComponentsDrawer extends StatelessWidget {
-  String title;
-  Icon iconLeading;
+  final String title;
+  final Icon iconLeading;
 
-  ComponentsDrawer({Key? key, required this.title, required this.iconLeading})
+  const ComponentsDrawer(
+      {Key? key, required this.title, required this.iconLeading})
       : super(key: key);
 
   @override
@@ -71,12 +74,11 @@ class ComponentsDrawer extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
 class ButtonDrawer extends StatelessWidget {
-  String title;
-  double width;
+  final String title;
+  final double width;
 
-  ButtonDrawer({Key? key, required this.title, required this.width})
+  const ButtonDrawer({Key? key, required this.title, required this.width})
       : super(key: key);
 
   @override
