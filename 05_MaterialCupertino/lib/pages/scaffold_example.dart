@@ -70,7 +70,6 @@ class _ScaffoldExampleState extends State<ScaffoldExample>
     setState(() => _shouldShow = true);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -222,7 +221,6 @@ class BottomSheet extends StatelessWidget {
     );
   }
 }
-
 
 //бывшие виджеты в виде ф-ций
 //выезжающая область после нажатия на кнопку +
