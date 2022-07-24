@@ -114,12 +114,12 @@ class _ScaffoldExampleState extends State<ScaffoldExample>
 
 //кнопки нижней панели экрана
 class MyBottonBar extends StatelessWidget {
-  const MyBottonBar(
-      {Key? key,
-      required this.onTap,
-      required this.currentTabIndex,
-      required this.tabBarItems})
-      : super(key: key);
+  const MyBottonBar({
+    Key? key,
+    required this.onTap,
+    required this.currentTabIndex,
+    required this.tabBarItems,
+  }) : super(key: key);
 
   final Function(int) onTap;
   final int currentTabIndex;
@@ -143,7 +143,10 @@ class MyBottonBar extends StatelessWidget {
 
 //главная панель приложения
 class MainAppBar extends StatelessWidget {
-  const MainAppBar({Key? key, required this.openEndDrawer}) : super(key: key);
+  const MainAppBar({
+    Key? key,
+    required this.openEndDrawer,
+  }) : super(key: key);
 
   final Function() openEndDrawer;
 
