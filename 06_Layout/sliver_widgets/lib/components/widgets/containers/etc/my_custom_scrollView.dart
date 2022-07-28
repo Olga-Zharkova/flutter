@@ -11,13 +11,13 @@ class MyCustomScrollView extends StatelessWidget {
   final String textTitle;
   final String imageURL;
   final String description;
-
+final double _heighSliverAppBar = 150;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
-          expandedHeight: 150,
+          expandedHeight: _heighSliverAppBar,
           floating: true,
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
@@ -29,25 +29,36 @@ class MyCustomScrollView extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 16),
             ),
-            background: Image.network(
-              imageURL,
-              color: Colors.black,
-              loadingBuilder: (BuildContext context, Widget child,
-                  ImageChunkEvent? loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
+            background: Stack(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.network(
+                    imageURL,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-              fit: BoxFit.cover,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: _heighSliverAppBar,
+                  color: Colors.black38,
+                )
+              ],
             ),
           ),
         ),
