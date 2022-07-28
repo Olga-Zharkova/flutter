@@ -31,6 +31,7 @@ class MyCustomScrollView extends StatelessWidget {
             ),
             background: Image.network(
               imageURL,
+              color: Colors.black,
               loadingBuilder: (BuildContext context, Widget child,
                   ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) {
