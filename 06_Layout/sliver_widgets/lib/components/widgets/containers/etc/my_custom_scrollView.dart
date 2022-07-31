@@ -11,7 +11,8 @@ class MyCustomScrollView extends StatelessWidget {
   final String textTitle;
   final String imageURL;
   final String description;
-final double _heighSliverAppBar = 150;
+  final double _heighSliverAppBar = 150;
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -46,7 +47,7 @@ final double _heighSliverAppBar = 150;
                           color: Colors.white,
                           value: loadingProgress.expectedTotalBytes != null
                               ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
+                                  loadingProgress.expectedTotalBytes!
                               : null,
                         ),
                       );
