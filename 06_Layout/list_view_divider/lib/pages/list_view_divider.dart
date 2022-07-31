@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled4/component/simple_card.dart';
+import 'package:untitled4/components/widgets/containers/etc/simple_card.dart';
 
 class ListViewDivider extends StatefulWidget {
   const ListViewDivider({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class ListViewDivider extends StatefulWidget {
 }
 
 class _ListViewDividerState extends State<ListViewDivider> {
-  List<Widget> data = List.generate(1000, (index) {
+  final List<Widget> _data = List.generate(1000, (index) {
     return SimpleCard(index: index.toString());
   });
 
@@ -35,8 +35,8 @@ class _ListViewDividerState extends State<ListViewDivider> {
     return Scaffold(
       body: ListView.separated(
         controller: _controller,
-        itemCount: data.length,
-        itemBuilder: (context, index) => data[index],
+        itemCount: _data.length,
+        itemBuilder: (context, index) => _data[index],
         separatorBuilder: (BuildContext context, int index) => const Divider(),
       ),
     );
