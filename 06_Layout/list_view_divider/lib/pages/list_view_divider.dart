@@ -16,12 +16,9 @@ class _ListViewDividerState extends State<ListViewDivider> {
   final ScrollController _controller = ScrollController(initialScrollOffset: 0);
 
   @override
-  void initstate() {
+  void initState() {
     super.initState();
-    _controller.addListener(() {
-      print(_controller.offset.floor());
-      print('MAX SCROLL EXTENT: ${_controller.position.maxScrollExtent}');
-    });
+    _controller.addListener(() {});
   }
 
   @override
@@ -33,11 +30,14 @@ class _ListViewDividerState extends State<ListViewDivider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.separated(
-        controller: _controller,
-        itemCount: _data.length,
-        itemBuilder: (context, index) => _data[index],
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      body: SafeArea(
+        child: ListView.separated(
+          controller: _controller,
+          itemCount: _data.length,
+          itemBuilder: (context, index) => _data[index],
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
+        ),
       ),
     );
   }

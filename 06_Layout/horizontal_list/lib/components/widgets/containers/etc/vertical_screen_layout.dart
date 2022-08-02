@@ -12,12 +12,9 @@ class _VerticalScreenLayoutState extends State<VerticalScreenLayout> {
   final ScrollController _controller = ScrollController(initialScrollOffset: 0);
 
   @override
-  void initstate() {
+  void initState() {
     super.initState();
-    _controller.addListener(() {
-      print(_controller.offset.floor());
-      print('MAX SCROLL EXTENT: ${_controller.position.maxScrollExtent}');
-    });
+    _controller.addListener(() {});
   }
 
   @override

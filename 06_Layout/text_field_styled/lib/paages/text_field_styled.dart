@@ -29,29 +29,26 @@ class _TextFieldStyledState extends State<TextFieldStyled> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Card(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           child: TextField(
             decoration: InputDecoration(
               enabledBorder: _enabledBorder,
               focusedBorder: _focusedBorder,
-              suffixIcon: Icon(Icons.search, color: Colors.purple),
-              //почему не дает объявить действие у кнопки?
-              //Invalid constant value
-              // IconButton(
-              //   onPressed: () {},
-              //   icon: Icon(Icons.search, color: Colors.purple),
-              // ),
+              suffixIcon: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.search, color: Colors.purple),
+              ),
               hintText: 'Введите значение',
               helperText: 'Поле для поиска заметок',
               labelText: 'Search',
-              labelStyle: TextStyle(
+              labelStyle: const TextStyle(
                 color: Colors.purple,
                 fontWeight: FontWeight.w400,
               ),
-              floatingLabelStyle: TextStyle(
+              floatingLabelStyle: const TextStyle(
                 color: Colors.purple,
               ),
             ),
