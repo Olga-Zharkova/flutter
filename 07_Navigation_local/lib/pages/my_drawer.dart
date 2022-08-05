@@ -1,20 +1,18 @@
-
 import 'package:flutter/material.dart';
-import 'package:untitled5/models/fetch_file.dart';
-
 
 class MyDrawer extends StatefulWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  final Future<String> dataList = fetchFileFromAssets('lib/models/data.json');
-
-  static const _styleTitle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const _styleTitleButton = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    color: Colors.purple,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +22,17 @@ class _MyDrawerState extends State<MyDrawer> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/');
-              },
-              child: const Text('Home', style: _styleTitle)),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/');
+            },
+            child: const Text('Home', style: _styleTitleButton),
+          ),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/albums');
-              },
-              child: const Text('Albums', style: _styleTitle)),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/albums');
+            },
+            child: const Text('Albums', style: _styleTitleButton),
+          ),
         ],
       ),
     );

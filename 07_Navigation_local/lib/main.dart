@@ -4,7 +4,6 @@ import 'package:untitled5/pages/description_artist.dart';
 import 'package:untitled5/pages/home_page.dart';
 import 'package:untitled5/pages/not_found.dart';
 
-
 void main() {
   runApp(
     MaterialApp(
@@ -20,11 +19,24 @@ void main() {
             return MaterialPageRoute(
               builder: (BuildContext context) => const AlbumsPage(),
             );
-          case  DescriptionArtist.routeName:
+          case DescriptionArtist.routeName:
+            final args = setting.arguments as Map<String, dynamic>;
             return MaterialPageRoute(
-              builder: (BuildContext context) => const  DescriptionArtist(),
+              builder: (BuildContext _) {
+                if (args.containsKey('aboutArtist') &&
+                    args.containsKey('nameArtist')) {
+                  return DescriptionArtist(
+                    aboutArtist: args['aboutArtist'],
+                    nameArtist: args['nameArtist'],
+                  );
+                } else {
+                  return const DescriptionArtist(
+                      aboutArtist: 'Error', nameArtist: 'Error');
+                }
+              },
             );
-          default: const NotFound();
+          default:
+            const NotFound();
         }
       },
     ),

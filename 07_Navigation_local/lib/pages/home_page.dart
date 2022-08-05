@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:untitled5/pages/my_drawer.dart';
 
-
 class HomePage extends StatelessWidget {
   static const routeName = '/';
 
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home page')),
-      body: const ColoredBox(color: Colors.lightBlue),
+      backgroundColor: Colors.purple.shade50,
+      appBar: AppBar(
+        title: const Text('Home page'),
+        backgroundColor: Colors.purple.shade500,
+      ),
+      body: Container(),
       drawer: const MyDrawer(),
     );
   }
