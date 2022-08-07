@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:untitled5/components/widgets/containers/error_data/file_is_empty.dart';
+import 'package:untitled5/components/widgets/containers/error_data/loading_data.dart';
+import 'package:untitled5/components/widgets/containers/error_data/snapshot_has_error.dart';
 import 'package:untitled5/components/widgets/containers/etc/artist_card.dart';
-import 'package:untitled5/models/data.dart';
-import 'package:untitled5/models/fetch_file.dart';
+import 'package:untitled5/components/functions/fetch_file.dart';
 import 'package:untitled5/pages/my_drawer.dart';
 
 class AlbumsPage extends StatefulWidget {
@@ -41,44 +43,26 @@ class _AlbumsPageState extends State<AlbumsPage> {
         child: FutureBuilder<String>(
           future: fetchFileFromAssets('assets/data.json'),
           builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+            // String? jsonData = snapshot.data;
+            // print('jsonData_is_${jsonData}_.');
             if (snapshot.hasData) {
               String? jsonData = snapshot.data;
-              return ListView.builder(
-                controller: _controller,
-                itemCount: json.decode(jsonData!).length,
-                itemBuilder: (context, index) => ArtistCard(
-                  nameArtist: json.decode(jsonData)[index]['name'],
-                  aboutArtist: json.decode(jsonData)[index]['about'],
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Column(
-                children: [
-                  const Icon(
-                    Icons.error_outline,
-                    color: Colors.red,
-                    size: 60,
+              if (jsonData == null || jsonData.isEmpty) {
+                return const FileIsEmpty();
+              } else {
+                return ListView.builder(
+                  controller: _controller,
+                  itemCount: json.decode(jsonData).length,
+                  itemBuilder: (context, index) => ArtistCard(
+                    nameArtist: json.decode(jsonData)[index]['name'],
+                    aboutArtist: json.decode(jsonData)[index]['about'],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text('Error: ${snapshot.error}'),
-                  )
-                ],
-              );
+                );
+              }
             } else {
-              return Column(
-                children: const [
-                  SizedBox(
-                    width: 60,
-                    height: 60,
-                    child: CircularProgressIndicator(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: Text('Awaiting result...'),
-                  )
-                ],
-              );
+              return (snapshot.hasError)
+                  ? SnapshotHasError(error: {snapshot.error})
+                  : const LoadingData();
             }
           },
         ),
