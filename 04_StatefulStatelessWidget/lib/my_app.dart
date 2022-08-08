@@ -85,15 +85,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
-                        height: MediaQuery.of(context).size.height * 0.25,
-                        color: Colors.white,
-                        child: CachedNetworkImage(
-                          imageUrl: e,
-                          placeholder: (context, e) =>
-                              const CircularProgressIndicator(),
-                          errorWidget: (context, e, error) =>
-                              const Icon(Icons.error),
-                        )),
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      color: Colors.white,
+                      child: CachedNetworkImage(
+                        imageUrl: e,
+                        placeholder: (context, e) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, e, error) =>
+                            const Icon(Icons.error),
+                      ),
+                    ),
                   );
                 }).toList()
               ],
