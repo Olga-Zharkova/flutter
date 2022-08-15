@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
   final Function(String) syncingEnteredText;
-  final Function fileSearch(String value);
+  final VoidCallback fileSearch;
 
-  const MyTextField({Key? key, required this.syncingEnteredText, required this.fileSearch(value)})
+  const MyTextField(
+      {Key? key, required this.syncingEnteredText, required this.fileSearch})
       : super(key: key);
 
   @override
@@ -37,7 +38,7 @@ class MyTextField extends StatelessWidget {
                 ),
               ),
               child: TextButton(
-                onPressed: fileSearch(),
+                onPressed: fileSearch,
                 child: const Text(
                   'Найти',
                   style: TextStyle(color: Colors.white),

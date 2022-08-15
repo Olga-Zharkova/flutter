@@ -14,31 +14,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _nameFiles = '';
+  String _nameFile = '';
 
   //позволяет выводить данные только при успешном их получении
-  bool _indicator = true;
+  //0-начало работы
+  //1-наименование введенного файла корректно
+  //2-наименование введенного файла некорректно
+  int _indicator = 0;
 
+  bool _autofocus=false;
   //ф-ция подхватки введенных данных
   void syncingEnteredText(String newEnteredText) {
     setState(
       () {
-        _nameFiles = newEnteredText;
-        _indicator = false;
+        _nameFile = newEnteredText;
+        _indicator = 2;
       },
     );
   }
 
   //вызов при нажатии на кнопку "найти"
-  void fileSearch(String nameFiles) {
-    if (nameFiles.isNotEmpty) {
-      setState(() => _indicator = true);
+  void fileSearch(String nameFile) {
+    if (nameFile.isNotEmpty) {
+      setState(() => _indicator = 1);
+      FocusManager.instance.primaryFocus?.unfocus();
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -51,31 +51,33 @@ class _HomePageState extends State<HomePage> {
         children: [
           MyTextField(
             syncingEnteredText: syncingEnteredText,
-            fileSearch: fileSearch(_nameFiles),
+            fileSearch: () => fileSearch(_nameFile),
           ),
-          _indicator == false
+          _indicator == 0
               ? const SizedBox()
-              : FutureBuilder<String>(
-                  future: fetchFileFromAssets('assets/$_nameFiles'),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    if (snapshot.hasData) {
-                      String? data = snapshot.data;
-                      if (data == null || data.isEmpty) {
-                        return const FileIsEmpty();
-                      } else {
-                        return DataOutput(
-                          nameFile: _nameFiles,
-                          text: '${snapshot.data}',
-                        );
-                      }
-                    } else {
-                      return (snapshot.hasError)
-                          ? const SnapshotHasError()
-                          : const LoadingData();
-                    }
-                  },
-                ),
+              : _indicator == 2
+                  ? const SizedBox()
+                  : FutureBuilder<String>(
+                      future: fetchFileFromAssets('assets/$_nameFile.txt'),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<String> snapshot) {
+                        if (snapshot.hasData) {
+                          String? data = snapshot.data;
+                          if (data == null || data.isEmpty) {
+                            return const FileIsEmpty();
+                          } else {
+                            return DataOutput(
+                              nameFile: _nameFile,
+                              text: '${snapshot.data}',
+                            );
+                          }
+                        } else {
+                          return (snapshot.hasError)
+                              ? const SnapshotHasError()
+                              : const LoadingData();
+                        }
+                      },
+                    ),
         ],
       ),
     );
