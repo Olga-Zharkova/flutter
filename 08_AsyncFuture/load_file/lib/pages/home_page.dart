@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:untitled5/components/widgets/containers/error_data/file_is_empty.dart';
 import 'package:untitled5/components/widgets/containers/error_data/loading_data.dart';
 import 'package:untitled5/components/widgets/containers/error_data/snapshot_has_error.dart';
@@ -15,30 +16,39 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String _nameFile = '';
+  dynamic _data;
 
   //позволяет выводить данные только при успешном их получении
   //0-начало работы
   //1-наименование введенного файла корректно
   //2-наименование введенного файла некорректно
-  int _indicator = 0;
+  bool _indicator = false;
 
-  bool _autofocus=false;
   //ф-ция подхватки введенных данных
   void syncingEnteredText(String newEnteredText) {
     setState(
       () {
         _nameFile = newEnteredText;
-        _indicator = 2;
+        _indicator = false;
       },
     );
   }
 
   //вызов при нажатии на кнопку "найти"
-  void fileSearch(String nameFile) {
+  void fileSearch(String nameFile) async {
     if (nameFile.isNotEmpty) {
-      setState(() => _indicator = 1);
+      setState(() {
+        _indicator = true;
+        //_data = fetchFileFromAssets('assets/$_nameFile.txt');
+      });
       FocusManager.instance.primaryFocus?.unfocus();
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _data = fetchFileFromAssets('assets/$_nameFile.txt');
   }
 
   @override
@@ -53,31 +63,29 @@ class _HomePageState extends State<HomePage> {
             syncingEnteredText: syncingEnteredText,
             fileSearch: () => fileSearch(_nameFile),
           ),
-          _indicator == 0
+          _indicator == false
               ? const SizedBox()
-              : _indicator == 2
-                  ? const SizedBox()
-                  : FutureBuilder<String>(
-                      future: fetchFileFromAssets('assets/$_nameFile.txt'),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<String> snapshot) {
-                        if (snapshot.hasData) {
-                          String? data = snapshot.data;
-                          if (data == null || data.isEmpty) {
-                            return const FileIsEmpty();
-                          } else {
-                            return DataOutput(
-                              nameFile: _nameFile,
-                              text: '${snapshot.data}',
-                            );
-                          }
-                        } else {
-                          return (snapshot.hasError)
-                              ? const SnapshotHasError()
-                              : const LoadingData();
-                        }
-                      },
-                    ),
+              : FutureBuilder<String>(
+                  future: _data,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.hasData) {
+                      String? data = snapshot.data;
+                      if (data == null || data.isEmpty) {
+                        return const FileIsEmpty();
+                      } else {
+                        return DataOutput(
+                          nameFile: _nameFile,
+                          text: '${snapshot.data}',
+                        );
+                      }
+                    } else {
+                      return (snapshot.hasError)
+                          ? const SnapshotHasError()
+                          : const LoadingData();
+                    }
+                  },
+                ),
         ],
       ),
     );

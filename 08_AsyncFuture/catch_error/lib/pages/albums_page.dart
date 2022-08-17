@@ -20,10 +20,12 @@ class AlbumsPage extends StatefulWidget {
 class _AlbumsPageState extends State<AlbumsPage> {
   final ScrollController _controller = ScrollController(initialScrollOffset: 0);
 
+  dynamic data;
   @override
   void initState() {
     super.initState();
     _controller.addListener(() {});
+    data = fetchFileFromAssets('assets/data.json');
   }
 
   @override
@@ -41,7 +43,7 @@ class _AlbumsPageState extends State<AlbumsPage> {
       ),
       body: SafeArea(
         child: FutureBuilder<String>(
-          future: fetchFileFromAssets('assets/dta.json'),
+          future: data,
           builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
             if (snapshot.hasData) {
               String? jsonData = snapshot.data;

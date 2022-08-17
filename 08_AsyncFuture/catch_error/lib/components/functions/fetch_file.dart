@@ -1,5 +1,5 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'dart:io' as io;
 
 Future<String> fetchFileFromAssets(String assetsPath) async {
  try {
