@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/catch_error/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/catch_error/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/catch_error/build" />
+      <excludeFolder url="file://$MODULE_DIR$/load_file/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/load_file/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/load_file/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -35,11 +35,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   //вызов при нажатии на кнопку "найти"
-  void fileSearch(String nameFile) async {
+  Future <void> fileSearch(String nameFile) async {
     if (nameFile.isNotEmpty) {
       setState(() {
         _indicator = true;
-        //_data = fetchFileFromAssets('assets/$_nameFile.txt');
+        _data = fetchFileFromAssets('assets/$_nameFile.txt');
       });
       FocusManager.instance.primaryFocus?.unfocus();
     }
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _data = fetchFileFromAssets('assets/$_nameFile.txt');
+    //_data = fetchFileFromAssets('assets/$_nameFile.txt');
   }
 
   @override
