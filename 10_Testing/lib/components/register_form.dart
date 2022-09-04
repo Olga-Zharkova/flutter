@@ -10,7 +10,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(debugLabel: 'registerForm');
   bool _isSuccess = false;
   void _handleSubmit() {
     if (_formKey.currentState!.validate()) {

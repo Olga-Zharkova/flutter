@@ -57,6 +57,7 @@ class _LoginViewState extends State<LoginView> {
                           : 'Еще нет аккаунта? ',
                     ),
                     TextButton(
+                      key: const Key('SwitchForm'),
                       onPressed: _switchForm,
                       child: RichText(
                         text: TextSpan(children: [

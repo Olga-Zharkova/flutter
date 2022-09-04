@@ -20,8 +20,9 @@ void main() {
           DefaultWidgetsLocalizations.delegate,
         ],
       ));
-
-      // TODO: write tests
+      expect(find.byKey(const Key('SwitchForm')), findsOneWidget);
+      //expect(find.byKey(GlobalKey(debugLabel: 'registerForm')), findsOneWidget);
+      //expect(find.byKey(GlobalKey(debugLabel: 'loginForm')), findsOneWidget);
     });
   });
 }
