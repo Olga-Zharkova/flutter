@@ -7,21 +7,33 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:testing/components/register_form.dart';
 
 import 'package:testing/views/login_view.dart';
 
 void main() {
-  group('Login view tests', () {
+  // group('Login view tests', () {
+  //   testWidgets("test description", (WidgetTester tester) async {
+  //     await tester.pumpWidget(const MaterialApp(
+  //       home: LoginView(),
+  //       localizationsDelegates: [
+  //         DefaultMaterialLocalizations.delegate,
+  //         DefaultWidgetsLocalizations.delegate,
+  //       ],
+  //     ));
+  //     expect(find.byKey(const Key('SwitchForm')), findsOneWidget);
+  //   });
+  // });
+  group('Register form view tests', () {
     testWidgets("test description", (WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: LoginView(),
+      await tester.pumpWidget(const MaterialApp(
+        home: RegisterForm(),
         localizationsDelegates: [
           DefaultMaterialLocalizations.delegate,
           DefaultWidgetsLocalizations.delegate,
         ],
       ));
-      expect(find.byKey(const Key('SwitchForm')), findsOneWidget);
-      //expect(find.byKey(GlobalKey(debugLabel: 'registerForm')), findsOneWidget);
+      expect(find.byKey(GlobalKey<FormState>(debugLabel: 'registerForm')), findsOneWidget);
       //expect(find.byKey(GlobalKey(debugLabel: 'loginForm')), findsOneWidget);
     });
   });
