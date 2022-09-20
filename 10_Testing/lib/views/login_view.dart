@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:testing/components/login_form.dart';
 import 'package:testing/components/register_form.dart';
 
-enum FormType {login, register }
+enum FormType { login, register }
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -54,20 +54,13 @@ class _LoginViewState extends State<LoginView> {
                     Text(
                       _formType != FormType.login
                           ? 'Уже есть аккаунт?'
-                          : 'Еще нет аккаунта? ',
+                          : 'Еще нет аккаунта?',
                     ),
                     TextButton(
-                      key: const Key('SwitchForm'),
                       onPressed: _switchForm,
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: _formType != FormType.login
-                                ? 'Войти'
-                                : 'Регистрация',
-                          )
-                        ], style: Theme.of(context).textTheme.bodyText1),
-                      ),
+                      child: Text(
+                          _formType != FormType.login ? 'Войти' : 'Регистрация',
+                          style: Theme.of(context).textTheme.bodyText1),
                     ),
                   ],
                 ),

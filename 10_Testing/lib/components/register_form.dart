@@ -16,18 +16,18 @@ class _RegisterFormState extends State<RegisterForm> {
     if (_formKey.currentState!.validate()) {
       setState(() {
         _isSuccess = true;
-      });
-    }
+      });}
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _formKey, //_formKey
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextFormField(
+            key: const Key('enterNameRegistration'),
             decoration: const InputDecoration(labelText: 'First name'),
             validator: (value) {
               if (value == '') return 'Введите имя';
@@ -35,6 +35,7 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           TextFormField(
+            key: const Key('enterLastNameRegistration'),
             decoration: const InputDecoration(labelText: 'Last name'),
             validator: (value) {
               if (value == '') return 'Введите фамилию';
@@ -42,6 +43,7 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           TextFormField(
+            key: const Key('enterPhoneRegistration'),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
@@ -53,6 +55,7 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           TextFormField(
+            key: const Key('enterEmailRegistration'),
             decoration: const InputDecoration(labelText: 'Email'),
             validator: (value) {
               if (value == '') return 'Заполните поле email';

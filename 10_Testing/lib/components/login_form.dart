@@ -10,7 +10,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(debugLabel: 'loginForm');
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool successMessage = false;
 
   @override
@@ -21,6 +21,7 @@ class _LoginFormState extends State<LoginForm> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           TextFormField(
+            key: const Key('enterEmailLogin'),
             validator: (value) {
               if (value == '') return 'Введите email';
               if (!validateEmail(value!)) {
@@ -32,6 +33,7 @@ class _LoginFormState extends State<LoginForm> {
             decoration: const InputDecoration(labelText: 'Email'),
           ),
           TextFormField(
+            key: const Key('enterPhoneLogin'),
             validator: (value) {
               if (value == '') return 'Введите телефон';
               return null;
