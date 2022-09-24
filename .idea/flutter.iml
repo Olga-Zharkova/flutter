@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/09_Forms/hotels/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/09_Forms/hotels/build" />
+      <excludeFolder url="file://$MODULE_DIR$/09_Forms/hotels/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05_MaterialCupertino/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/05_MaterialCupertino/build" />
+      <excludeFolder url="file://$MODULE_DIR$/05_MaterialCupertino/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/03_Assets/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/03_Assets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/03_Assets/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/10_Testing/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/10_Testing/build" />
+      <excludeFolder url="file://$MODULE_DIR$/10_Testing/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/text_field_styled/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/text_field_styled/build" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/text_field_styled/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/sliver_widgets/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/sliver_widgets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/sliver_widgets/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/04_StatefulStatelessWidget/build" />
+      <excludeFolder url="file://$MODULE_DIR$/04_StatefulStatelessWidget/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/04_StatefulStatelessWidget/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/11_hero_animation/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/11_hero_animation/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/11_hero_animation/build" />
+      <excludeFolder url="file://$MODULE_DIR$/08_AsyncFuture/catch_error/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/08_AsyncFuture/catch_error/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/08_AsyncFuture/catch_error/build" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/list_view_divider/build" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/list_view_divider/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/list_view_divider/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/08_AsyncFuture/load_file/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/08_AsyncFuture/load_file/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/08_AsyncFuture/load_file/build" />
+      <excludeFolder url="file://$MODULE_DIR$/07_Navigation/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/07_Navigation/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/07_Navigation/build" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/horizontal_list/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/horizontal_list/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/06_Layout/horizontal_list/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
