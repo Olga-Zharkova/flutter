@@ -12,26 +12,26 @@ class CardAnimation extends StatelessWidget {
 
   const CardAnimation({super.key, required this.article});
 
+  void geFullDescriptionArticle(BuildContext context, Article article) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FullDescriptionArticle(
+          article: article,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    void geFullDescriptionArticle(Article article) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FullDescriptionArticle(
-            article: article,
-          ),
-        ),
-      );
-    }
-
     const double borderRadius = 20;
     const double heightCard = 200;
     const double sizeButton = 60;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       child: InkWell(
-        onTap: () => geFullDescriptionArticle(article),
+        onTap: () => geFullDescriptionArticle(context, article),
         child: Container(
           height: heightCard,
           decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class CardAnimation extends StatelessWidget {
                         borderRadius: borderRadius),
                     IconAddArticle(
                       size: sizeButton,
-                      borderRadius: borderRadius,
+                      paddingRight: borderRadius,
                       id: article.id,
                     ),
                   ],

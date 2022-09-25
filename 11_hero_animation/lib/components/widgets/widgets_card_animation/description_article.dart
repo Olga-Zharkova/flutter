@@ -22,12 +22,15 @@ class DescriptionArticle extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.fromLTRB(paddingLeft, 10, paddingRight, 10),
           child: Center(
-            child: Text(
-              description,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              softWrap: false,
+            child: Material(
+              color: Colors.grey[400],
+              child: Text(
+                description,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
+              ),
             ),
           ),
         ),

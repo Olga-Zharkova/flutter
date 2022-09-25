@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class IconAddArticle extends StatelessWidget {
   final double size;
-  final double borderRadius;
+  final double paddingRight;
   final int id;
 
   const IconAddArticle({
     super.key,
     required this.size,
-    required this.borderRadius,
+    required this.paddingRight,
     required this.id,
   });
 
@@ -16,7 +16,7 @@ class IconAddArticle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: -size / 2,
-      right: borderRadius,
+      right: paddingRight,
       child: Hero(
         tag: 'icon-$id',
         child: Material(
