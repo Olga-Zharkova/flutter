@@ -5,7 +5,7 @@ import 'package:flutter_architecture/ui/my_app.dart';
 void main() {
   //WidgetsFlutterBinding.ensureInitialized();
 
-  BlocFactory.instance.initialize();
+  BlocFactory.instance.initialize;
 
   runApp(const MaterialApp(home: MyApp()));
 }
