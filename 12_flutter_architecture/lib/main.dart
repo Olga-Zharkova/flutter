@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_architecture/data/service_provider.dart';
+import 'package:flutter_architecture/business/bloc_factory.dart';
 import 'package:flutter_architecture/ui/my_app.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized();
 
-  ServiceProvider().initialize();
+  BlocFactory.instance.initialize();
 
   runApp(const MaterialApp(home: MyApp()));
 }
