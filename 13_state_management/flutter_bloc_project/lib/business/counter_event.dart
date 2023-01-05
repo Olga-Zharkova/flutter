@@ -1,7 +1,7 @@
-part of 'counter_bloc.dart';
 
-abstract class Event {}
 
-class CounterIncrementPressed extends Event{}
+abstract class CounterEvent{}
+
+class CounterIncrementPressed extends CounterEvent{}
 
 

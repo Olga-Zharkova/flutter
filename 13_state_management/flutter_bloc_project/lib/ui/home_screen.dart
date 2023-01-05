@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_project/business/counter_event.dart';
 
 import 'package:untitled1/features.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../business/counter.dart';
-import '../data/couner_event.dart';
+import '../business/counter_bloc.dart';
+
 import 'widgets/card_product.dart';
 import 'widgets/my_badge.dart';
 
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final Counter bloc;
+  late final CounterBloc bloc;
   final DummyProductService dummyProductService = DummyProductService();
 
   Future<List<Product>> getListProduct() async {
@@ -25,16 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void addProduct(BuildContext context) {
-    context.read<Counter>().add(CounterEvent.increase);
+    context.read<CounterBloc>().add(CounterIncrementPressed);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bloc'),
+        title: const Text('Flutter bloc'),
         actions: [
-          BlocBuilder<Counter, int>(
+          BlocBuilder<CounterBloc, int>(
             builder: (_, state) => MyBadge(count: state),
           ),
         ],
