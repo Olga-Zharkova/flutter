@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void addProduct(BuildContext context) {
-    context.read<CounterBloc>().add(CounterIncrementPressed);
+    context.read<CounterBloc>().add(CounterIncrementPressed());
   }
 
   @override

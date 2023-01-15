@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/data/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/data/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/data/build" />
+      <excludeFolder url="file://$MODULE_DIR$/mob_x/build" />
+      <excludeFolder url="file://$MODULE_DIR$/mob_x/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/mob_x/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/simple_state_management/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/simple_state_management/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/simple_state_management/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_project/build" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_project/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc_project/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/redux_project/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/redux_project/build" />
+      <excludeFolder url="file://$MODULE_DIR$/redux_project/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_bloc_project/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_bloc_project/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutter_bloc_project/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/cubit_project/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/cubit_project/build" />
+      <excludeFolder url="file://$MODULE_DIR$/cubit_project/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/river_pod/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/river_pod/build" />
+      <excludeFolder url="file://$MODULE_DIR$/river_pod/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
