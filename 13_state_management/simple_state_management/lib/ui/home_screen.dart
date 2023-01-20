@@ -39,14 +39,21 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.hasData) {
             final products = snapshot.data;
             return products != null
-                ? ListView.builder(
+                ? GridView.builder(
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
                       return CardProduct(
                         addProduct: addProduct,
                         product: products[index],
                       );
-                    })
+                    },
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 230,
+                      crossAxisSpacing: 2,
+                      mainAxisSpacing: 2,
+                    ),
+                  )
                 : const Center(child: CircularProgressIndicator());
           } else {
             return const Center(child: CircularProgressIndicator());

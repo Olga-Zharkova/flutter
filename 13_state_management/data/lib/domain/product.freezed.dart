@@ -20,6 +20,7 @@ mixin _$Product {
   String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
@@ -30,7 +31,8 @@ abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
-  $Res call({int id, String name, double price, String description});
+  $Res call(
+      {int id, String name, double price, String description, String image});
 }
 
 /// @nodoc
@@ -50,6 +52,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? name = null,
     Object? price = null,
     Object? description = null,
+    Object? image = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -68,6 +71,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -79,7 +86,8 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       __$$_ProductCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, double price, String description});
+  $Res call(
+      {int id, String name, double price, String description, String image});
 }
 
 /// @nodoc
@@ -96,6 +104,7 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? name = null,
     Object? price = null,
     Object? description = null,
+    Object? image = null,
   }) {
     return _then(_$_Product(
       id: null == id
@@ -114,6 +123,10 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -125,7 +138,8 @@ class _$_Product implements _Product {
       {required this.id,
       required this.name,
       required this.price,
-      required this.description});
+      required this.description,
+      required this.image});
 
   @override
   final int id;
@@ -135,10 +149,12 @@ class _$_Product implements _Product {
   final double price;
   @override
   final String description;
+  @override
+  final String image;
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, price: $price, description: $description)';
+    return 'Product(id: $id, name: $name, price: $price, description: $description, image: $image)';
   }
 
   @override
@@ -150,11 +166,13 @@ class _$_Product implements _Product {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, price, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, price, description, image);
 
   @JsonKey(ignore: true)
   @override
@@ -168,7 +186,8 @@ abstract class _Product implements Product {
       {required final int id,
       required final String name,
       required final double price,
-      required final String description}) = _$_Product;
+      required final String description,
+      required final String image}) = _$_Product;
 
   @override
   int get id;
@@ -178,6 +197,8 @@ abstract class _Product implements Product {
   double get price;
   @override
   String get description;
+  @override
+  String get image;
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>

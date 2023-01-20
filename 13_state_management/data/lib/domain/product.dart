@@ -9,5 +9,6 @@ class Product with _$Product {
     required String name,
     required double price,
     required String description,
+    required String image,
   }) = _Product;
 }
