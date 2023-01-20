@@ -1,6 +1,6 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_state_management/ui/basket_content.dart';
 import 'package:simple_state_management/ui/widgets/card_product.dart';
 import 'package:simple_state_management/ui/widgets/my_badge.dart';
 import 'package:untitled1/features.dart';
@@ -22,8 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return newGetProducts;
   }
 
-  void addProduct() {
-    context.read<Counter>().increment();
+  void addProduct(Product product) {
+    context.read<Counter>().increment(product);
+  }
+
+  void getBasket() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const BasketContent(),
+      ),
+    );
   }
 
   @override
@@ -31,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Simple state management'),
-        actions: const [MyBadge()],
+        actions: [MyBadge(onPressed: getBasket)],
       ),
       body: FutureBuilder<List<Product>>(
         future: getListProduct(),
@@ -43,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
                       return CardProduct(
-                        addProduct: addProduct,
+                        addProduct: () => addProduct(products[index]),
                         product: products[index],
                       );
                     },

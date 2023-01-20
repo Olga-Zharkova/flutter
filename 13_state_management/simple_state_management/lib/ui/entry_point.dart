@@ -11,7 +11,10 @@ class EntryPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Counter>(
       create: (_) => Counter(),
-      child: const MaterialApp(home: HomeScreen()),
+      child: const MaterialApp(
+        home: HomeScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

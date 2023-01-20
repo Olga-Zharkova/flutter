@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
 
-
 class CardProduct extends StatelessWidget {
   final Product product;
   final VoidCallback addProduct;
@@ -22,7 +21,7 @@ class CardProduct extends StatelessWidget {
             SizedBox(
               height: 100,
               width: 170,
-              child: Image.network(product.image),
+              child: Image.asset(product.image),
             ),
             const SizedBox(height: 5),
             Text(
@@ -48,14 +47,3 @@ class CardProduct extends StatelessWidget {
     );
   }
 }
-//Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Padding(padding: const EdgeInsets.all(5), child: Column(
-//             children: [
-
-//             ],
-//           ),),
-
-//         ],
-//       ),
