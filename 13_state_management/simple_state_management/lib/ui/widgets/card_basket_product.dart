@@ -4,11 +4,11 @@ import 'package:untitled1/features.dart';
 
 import '../../business/counter.dart';
 
-class CardSelectProduct extends StatelessWidget {
+class CardBasketProduct extends StatelessWidget {
   final Product product;
   final int count;
 
-  const CardSelectProduct({
+  const CardBasketProduct({
     super.key,
     required this.product,
     required this.count,
@@ -24,11 +24,11 @@ class CardSelectProduct extends StatelessWidget {
           children: [
             Row(
               children: [
-                // SizedBox(
-                //   height: 50,
-                //   width: 100,
-                //   child: Image.asset(product.image),
-                // ),
+                SizedBox(
+                  height: 50,
+                  width: 100,
+                  child: Image.asset('assets/images/${product.image}.jpg'),
+                ),
                 const SizedBox(width: 10),
                 Text(product.name),
               ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_state_management/ui/basket_content.dart';
-import 'package:simple_state_management/ui/widgets/card_product.dart';
+import 'package:simple_state_management/ui/widgets/card_home_product.dart';
 import 'package:simple_state_management/ui/widgets/my_badge.dart';
 import 'package:untitled1/features.dart';
 
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? GridView.builder(
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return CardProduct(
+                      return CardHomeProduct(
                         addProduct: () => addProduct(products[index]),
                         product: products[index],
                       );

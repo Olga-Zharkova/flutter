@@ -36,8 +36,8 @@ class DummyProductService implements ProductService {
         price: index.toDouble(),
         description: "description $index",
         image: index % 5 != 0
-            ? 'assets/images/$index.jpg'
-            : 'assets/images/null.jpg',
+            ? '$index'
+            : 'null',
       ),
     );
   }

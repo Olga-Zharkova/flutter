@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
 
-class CardProduct extends StatelessWidget {
+class CardHomeProduct extends StatelessWidget {
   final Product product;
   final VoidCallback addProduct;
 
-  const CardProduct({
+  const CardHomeProduct({
     super.key,
     required this.product,
     required this.addProduct,
@@ -15,24 +15,28 @@ class CardProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(5),
         child: Column(
           children: [
-            SizedBox(
-              height: 100,
-              width: 170,
-              child: Image.asset(product.image),
+            Container(
+              height: 80,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/${product.image}.jpg'), //pseudo-code here
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             const SizedBox(height: 5),
             Text(
               product.name,
-              style: const TextStyle(fontSize: 22),
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 10),
             Container(
               height: 40,
-              width: 130,
-              color: Colors.green,
+              width: 100,
+              color: Colors.blue.shade300,
               child: TextButton(
                 onPressed: addProduct,
                 child: const Text(
