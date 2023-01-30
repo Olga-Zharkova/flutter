@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
 
 import '../business/counter.dart';
-import '../data/couner_event.dart';
-import 'widgets/card_product.dart';
+import '../model/service_provider.dart';
+import 'basket_content.dart';
+import 'widgets/card_home_product.dart';
 import 'widgets/my_badge.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,15 +17,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final Counter bloc;
-  final DummyProductService dummyProductService = DummyProductService();
 
-  Future<List<Product>> getListProduct() async {
-    final newGetProducts = await dummyProductService.getListProduct();
-    return newGetProducts;
+  void addProduct(Product product) {
+    bloc.increment(product);
   }
 
-  void addProduct() {
-    bloc.increment();
+  void getBasket(Counter bloc) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BasketContent(bloc: bloc),
+      ),
+    );
   }
 
   @override
@@ -43,22 +47,26 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bloc'),
+        title: const Text('Cubit project'),
         actions: [
-          StreamBuilder<int>(
+          StreamBuilder<List<Product>>(
             stream: bloc.state,
             builder: (_, snapshot) {
               if (snapshot.hasData) {
-                return MyBadge(count: snapshot.data!);
+                return MyBadge(
+                    count: snapshot.data!.length,
+                    onPressed: () => getBasket(bloc));
               } else {
-                return MyBadge(count: bloc.value);
+                return MyBadge(
+                    count: bloc.selectProduct.length,
+                    onPressed: () => getBasket(bloc));
               }
             },
           ),
         ],
       ),
       body: FutureBuilder<List<Product>>(
-        future: getListProduct(),
+        future: ServiceProvider().getListProduct(),
         builder: (context, snapshotList) {
           if (snapshotList.hasData) {
             final products = snapshotList.data;
@@ -66,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? ListView.builder(
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return CardProduct(
-                        addProduct: addProduct,
+                      return CardHomeProduct(
+                        addProduct: () => addProduct(products[index]),
                         product: products[index],
                       );
                     })

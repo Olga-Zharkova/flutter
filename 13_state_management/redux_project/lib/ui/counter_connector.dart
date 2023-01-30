@@ -15,7 +15,7 @@ class CounterConnector extends StatelessWidget {
         converter: ViewModel.fromStore,
         builder: (context, vm) {
           return HomeScreen(
-            value: vm.value,
+            value: vm.listProduct.length,
             increase: vm.onIncrease,
           );
         });

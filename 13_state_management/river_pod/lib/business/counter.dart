@@ -1,9 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:untitled1/features.dart';
 
-final counterProvider = StateNotifierProvider<Counter, int>((_) => Counter());
+final counterProvider = StateNotifierProvider<Counter, List<Product>>((_) => Counter());
 
-class Counter extends StateNotifier<int> {
-  Counter() : super(0);
+class Counter extends StateNotifier<List<Product>> {
+  Counter() : super([]);
 
-  void increment() => state++;
+  void increment(Product product) {
+    state.add(product);
+  }
+
+  void decrease(Product product){
+    state.removeAt(state
+        .indexOf(state.lastWhere((element) => element == product)));
+  }
 }

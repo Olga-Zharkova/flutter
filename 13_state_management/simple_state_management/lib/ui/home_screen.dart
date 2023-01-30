@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:simple_state_management/ui/basket_content.dart';
 import 'package:simple_state_management/ui/widgets/card_home_product.dart';
 import 'package:simple_state_management/ui/widgets/my_badge.dart';
 import 'package:untitled1/features.dart';
-
-import '../business/counter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,10 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<List<Product>> getListProduct() async {
     final newGetProducts = await _dummyProductService.getListProduct();
     return newGetProducts;
-  }
-
-  void addProduct(Product product) {
-    context.read<Counter>().increment(product);
   }
 
   void getBasket() {
@@ -52,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
                       return CardHomeProduct(
-                        addProduct: () => addProduct(products[index]),
                         product: products[index],
                       );
                     },

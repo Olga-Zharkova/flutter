@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:untitled1/features.dart';
 
+import '../model/service_provider.dart';
 import 'widgets/card_product.dart';
 import 'widgets/my_badge.dart';
 
@@ -17,20 +18,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DummyProductService dummyProductService = DummyProductService();
-
-    Future<List<Product>> getListProduct() async {
-      final newGetProducts = await dummyProductService.getListProduct();
-      return newGetProducts;
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Redux'),
         actions: [MyBadge(count: value)],
       ),
       body: FutureBuilder<List<Product>>(
-        future: getListProduct(),
+        future: ServiceProvider().getListProduct(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final products = snapshot.data;

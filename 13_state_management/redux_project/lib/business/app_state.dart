@@ -1,54 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
+import 'package:untitled1/features.dart';
 
 import 'counter_increment_action.dart';
 
 @immutable
 class AppState {
-  final int value;
+  final List<Product> listProduct;
   final bool isLoaded;
 
   const AppState({
-    this.value = 0,
+    this.listProduct = [],
     this.isLoaded = false,
   });
 
   factory AppState.initial() => const AppState();
 
   AppState copyWith({
-    int? value,
+    List<Product>? listProduct,
     bool? isLoaded,
   }) {
     return AppState(
-      value: value ?? this.value,
+      listProduct: listProduct ?? this.listProduct,
       isLoaded: isLoaded ?? this.isLoaded,
     );
   }
 
   @override
-  bool operator ==(Object other) =>
+  bool operator == (Object other) =>
       identical(this, other) ||
       other is AppState &&
           runtimeType == other.runtimeType &&
-          value == other.value;
+          listProduct == other.listProduct;
 
   @override
-  int get hashCode => value.hashCode;
+  int get hashCode => listProduct.length.hashCode;
 
   @override
   String toString() {
-    return 'AppState{value: $value}';
+    return 'AppState{value: ${listProduct.length}}';
   }
 }
 
-final incrementReducer = combineReducers<int>([
-  TypedReducer<int, CounterIncrementAction>(_increment),
+final incrementReducer = combineReducers<List<Product>>([
+  TypedReducer<List<Product>, CounterIncrementAction>(_increment),
 ]);
 
-int _increment(int value, CounterIncrementAction action) => ++value;
+List<Product> _increment(List<Product> listProduct, CounterIncrementAction action) {
+  return listProduct;
+}
 
 AppState appReducer(AppState state, action) {
   return AppState(
-    value: incrementReducer(state.value, action),
+    listProduct: incrementReducer(state.listProduct, action),
   );
 }

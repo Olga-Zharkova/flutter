@@ -1,51 +1,31 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mob_x/ui/widgets/my_badge.dart';
 import 'package:provider/provider.dart';
 
 import 'package:untitled1/features.dart';
 
 import '../business/counter.dart';
-import 'widgets/card_product.dart';
-import 'widgets/my_badge.dart';
+import '../model/service_provider.dart';
+import 'widgets/card_home_product.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final DummyProductService dummyProductService = DummyProductService();
-
-    Future<List<Product>> getListProduct() async {
-      final newGetProducts = await dummyProductService.getListProduct();
-      return newGetProducts;
-    }
-
     final state = Provider.of<Counter>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mob X'),
         actions: [
-          Badge(
-            position: BadgePosition.topEnd(top: 3, end: 18),
-            animationDuration: const Duration(milliseconds: 300),
-            animationType: BadgeAnimationType.slide,
-            badgeContent: Observer(
-              builder: (context) => Text(
-                state.value.toString(),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              padding: const EdgeInsets.only(right: 30.0),
-              onPressed: () {},
-            ),
-          ),
+          MyBadge(count:state.listProduct.length),
         ],
       ),
       body: FutureBuilder<List<Product>>(
-        future: getListProduct(),
+        future: ServiceProvider().getListProduct(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final products = snapshot.data;
@@ -53,9 +33,9 @@ class HomeScreen extends StatelessWidget {
                 ? ListView.builder(
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return CardProduct(
-                        addProduct: state.increment,
+                      return CardHomeProduct(
                         product: products[index],
+                        onPressed: () => state.increment(products[index]),
                       );
                     })
                 : const Center(child: CircularProgressIndicator());

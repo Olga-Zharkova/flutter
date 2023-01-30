@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:redux/redux.dart';
+import 'package:untitled1/features.dart';
 
 import 'app_state.dart';
 import 'counter_increment_action.dart';
 
 class ViewModel {
-  final int value;
+  final List<Product> listProduct;
   final VoidCallback onIncrease;
 
   ViewModel({
-    required this.value,
+    required this.listProduct,
     required this.onIncrease,
   });
 
   static ViewModel fromStore(Store<AppState> store) => ViewModel(
-        value: store.state.value,
+        listProduct: store.state.listProduct,
         onIncrease: () => store.dispatch(
           CounterIncrementAction(),
         ),

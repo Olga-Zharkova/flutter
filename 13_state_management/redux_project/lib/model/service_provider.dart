@@ -1,13 +1,11 @@
 import 'package:untitled1/features.dart';
-import 'package:get_it/get_it.dart';
 
 class ServiceProvider {
-  static final _getIt = GetIt.I;
+  final DummyProductService _dummyProductService = DummyProductService();
 
-  T get<T extends Object>() => _getIt.get<T>();
-  static final instance = ServiceProvider();
-
-  void initialize() {
-    _getIt.registerLazySingleton<ProductService>(() => DummyProductService());
+  Future<List<Product>> getListProduct() async {
+    final newGetProducts = await _dummyProductService.getListProduct();
+    return newGetProducts;
   }
+
 }

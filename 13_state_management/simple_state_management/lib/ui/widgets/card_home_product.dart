@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
+import 'package:provider/provider.dart';
+
+import '../../business/counter.dart';
 
 class CardHomeProduct extends StatelessWidget {
   final Product product;
-  final VoidCallback addProduct;
 
   const CardHomeProduct({
     super.key,
     required this.product,
-    required this.addProduct,
   });
+
+  void addProduct(BuildContext context, Product product) {
+    context.read<Counter>().increment(product);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,8 @@ class CardHomeProduct extends StatelessWidget {
               height: 80,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/${product.image}.jpg'), //pseudo-code here
+                  image: AssetImage('assets/images/${product.image}.jpg'),
+                  //pseudo-code here
                   fit: BoxFit.cover,
                 ),
               ),
@@ -38,7 +44,7 @@ class CardHomeProduct extends StatelessWidget {
               width: 100,
               color: Colors.blue.shade300,
               child: TextButton(
-                onPressed: addProduct,
+                onPressed: () => addProduct(context, product),
                 child: const Text(
                   'купить',
                   style: TextStyle(color: Colors.black),

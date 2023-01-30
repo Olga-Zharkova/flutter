@@ -16,15 +16,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final Counter bloc;
-  final DummyProductService dummyProductService = DummyProductService();
 
-  Future<List<Product>> getListProduct() async {
-    final newGetProducts = await dummyProductService.getListProduct();
-    return newGetProducts;
-  }
 
-  void addProduct() {
-    bloc.action.add(CounterEvent.increase);
+  void addProduct(Product product) {
+    bloc.action.add(CounterEvent.increase, product);
   }
 
   @override
@@ -45,13 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Bloc'),
         actions: [
-          StreamBuilder<int>(
+          StreamBuilder<List<Product>>(
             stream: bloc.state,
             builder: (_, snapshot) {
               if (snapshot.hasData) {
-                return MyBadge(count: snapshot.data!);
+                return MyBadge(count: snapshot.data!.length);
               } else {
-                return MyBadge(count: bloc.value);
+                return MyBadge(count: bloc.selectProduct.length);
               }
             },
           ),
@@ -67,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
                       return CardProduct(
-                        addProduct: addProduct,
+                        addProduct: ()=>addProduct(products[index]),
                         product: products[index],
                       );
                     })

@@ -1,19 +1,27 @@
 import 'dart:async';
 
-import '../data/couner_event.dart';
+import 'package:untitled1/features.dart';
+
+import 'couner_event.dart';
+
 
 class Counter {
-  int value = 0;
-  final _stateController = StreamController<int>();
+  List<Product> selectProduct = [];
+  final _stateController = StreamController<List<Product>>();
 
-  Stream<int> get state => _stateController.stream;
+  Stream<List<Product>> get state => _stateController.stream;
 
   void dispose() {
     _stateController.close();
   }
 
-  void increment() async {
-    value++;
-    _stateController.add(value);
+  void increment(Product product) async {
+    selectProduct.add(product);
+    _stateController.add(selectProduct);
+  }
+  void decrease(Product product) async {
+    selectProduct.removeAt(selectProduct
+        .indexOf(selectProduct.lastWhere((element) => element == product)));
+    _stateController.add(selectProduct);
   }
 }
