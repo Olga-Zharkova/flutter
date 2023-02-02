@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
 
+import '../../business/counter_bloc.dart';
+import '../../business/counter_event.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 class CardHomeProduct extends StatelessWidget {
   final Product product;
-  final VoidCallback addProduct;
 
   const CardHomeProduct({
     super.key,
     required this.product,
-    required this.addProduct,
   });
 
   @override
   Widget build(BuildContext context) {
+    void addProduct(Product product) {
+      context.read<CounterBloc>().add(CounterIncrementPressed(product));
+    }
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(5),
@@ -39,7 +45,7 @@ class CardHomeProduct extends StatelessWidget {
               width: 100,
               color: Colors.blue.shade300,
               child: TextButton(
-                onPressed: addProduct,
+                onPressed: () => addProduct(product),
                 child: const Text(
                   'купить',
                   style: TextStyle(color: Colors.black),

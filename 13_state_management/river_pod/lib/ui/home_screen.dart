@@ -30,7 +30,6 @@ class HomeScreen extends ConsumerWidget {
     final count = ref.watch(counterProvider);
     final provider = ref.watch(counterProvider.notifier);
 
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('RiverPod'),

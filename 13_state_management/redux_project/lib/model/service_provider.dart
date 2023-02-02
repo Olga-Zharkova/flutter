@@ -7,5 +7,4 @@ class ServiceProvider {
     final newGetProducts = await _dummyProductService.getListProduct();
     return newGetProducts;
   }
-
 }

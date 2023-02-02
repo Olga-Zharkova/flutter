@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_project/business/counter_event.dart';
 
 import 'package:untitled1/features.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../business/counter_bloc.dart';
 
-import 'widgets/card_product.dart';
+import '../model/service_provider.dart';
+import 'basket_content.dart';
+import 'widgets/card_home_product.dart';
 import 'widgets/my_badge.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,15 +19,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final CounterBloc bloc;
-  final DummyProductService dummyProductService = DummyProductService();
 
-  Future<List<Product>> getListProduct() async {
-    final newGetProducts = await dummyProductService.getListProduct();
-    return newGetProducts;
-  }
-
-  void addProduct(BuildContext context) {
-    context.read<CounterBloc>().add(CounterIncrementPressed());
+  void getBasket(List<Product> productList) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BlocProvider<CounterBloc>(
+          create: (_) => CounterBloc(selectList: productList),
+          child: const BasketContent(),
+        ),
+      ),
+    );
   }
 
   @override
@@ -35,13 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Flutter bloc'),
         actions: [
-          BlocBuilder<CounterBloc, int>(
-            builder: (_, state) => MyBadge(count: state),
+          BlocBuilder<CounterBloc, List<Product>>(
+            builder: (context, state) => MyBadge(
+              count: state.length,
+              onPressed: () => getBasket(state),
+            ),
           ),
         ],
       ),
       body: FutureBuilder<List<Product>>(
-        future: getListProduct(),
+        future: ServiceProvider().getListProduct(),
         builder: (context, snapshotList) {
           if (snapshotList.hasData) {
             final products = snapshotList.data;
@@ -49,8 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? ListView.builder(
                     itemCount: products.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return CardProduct(
-                        addProduct: () => addProduct(context),
+                      return CardHomeProduct(
                         product: products[index],
                       );
                     })

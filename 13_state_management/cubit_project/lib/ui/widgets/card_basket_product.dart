@@ -43,9 +43,7 @@ class CardBasketProduct extends StatelessWidget {
                   count.toString(),
                   style: const TextStyle(color: Colors.green),
                 ),
-                IconButton(
-                    onPressed: (){},
-                    icon: const Icon(Icons.remove)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.remove)),
               ],
             ),
           ],

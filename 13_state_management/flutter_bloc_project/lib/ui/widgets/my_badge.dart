@@ -1,10 +1,19 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
+import '../../business/counter_bloc.dart';
+import '../basket_content.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 class MyBadge extends StatelessWidget {
   final int count;
+  final VoidCallback onPressed;
 
-  const MyBadge({super.key, required this.count});
+  const MyBadge({
+    super.key,
+    required this.count,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +28,7 @@ class MyBadge extends StatelessWidget {
       child: IconButton(
         icon: const Icon(Icons.shopping_cart),
         padding: const EdgeInsets.only(right: 30.0),
-        onPressed: () {},
+        onPressed: onPressed,
       ),
     );
   }

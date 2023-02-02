@@ -14,13 +14,17 @@ abstract class _Counter with Store {
 
   @action
   void increment(Product product) {
-    listProduct.add(product);
+    listProduct = [...listProduct, product];
   }
 
   @action
   void decrease(Product product) {
-    listProduct.removeAt(listProduct
-        .indexOf(listProduct.lastWhere((element) => element == product)));
+    if (listProduct.length > 1) {
+      List<Product> result = [...listProduct];
+      result.removeAt(listProduct
+          .indexOf(listProduct.lastWhere((element) => element == product)));
+      listProduct = [...result];
+    }
   }
 
   @action

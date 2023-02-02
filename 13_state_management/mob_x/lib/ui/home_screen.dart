@@ -8,10 +8,20 @@ import 'package:untitled1/features.dart';
 
 import '../business/counter.dart';
 import '../model/service_provider.dart';
+import 'basket_content.dart';
 import 'widgets/card_home_product.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void getBasket(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const BasketContent(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +31,14 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Mob X'),
         actions: [
-          MyBadge(count:state.listProduct.length),
+          MyBadge(
+            count: Observer(
+              builder: (context) => Text(
+                state.listProduct.length.toString(),
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
         ],
       ),
       body: FutureBuilder<List<Product>>(
