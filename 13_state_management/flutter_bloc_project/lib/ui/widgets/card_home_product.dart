@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
 
-import '../../business/counter_bloc.dart';
-import '../../business/counter_event.dart';
+import '../../business/counter_bloc/product_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../business/product_list_bloc/basket_bloc.dart';
+import '../../business/product_list_bloc/basket_event.dart';
 
 class CardHomeProduct extends StatelessWidget {
   final Product product;
@@ -16,7 +18,7 @@ class CardHomeProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void addProduct(Product product) {
-      context.read<CounterBloc>().add(CounterIncrementPressed(product));
+      context.read<BasketBloc>().add(BasketIncrementPressed(product));
     }
 
     return Card(

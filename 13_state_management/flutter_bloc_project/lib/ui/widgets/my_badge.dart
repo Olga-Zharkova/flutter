@@ -1,10 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
-import '../../business/counter_bloc.dart';
-import '../basket_content.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 class MyBadge extends StatelessWidget {
   final int count;
   final VoidCallback onPressed;

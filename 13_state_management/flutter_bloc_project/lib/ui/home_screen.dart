@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../business/counter_bloc.dart';
-
+import '../business/product_list_bloc/basket_bloc.dart';
 import '../model/service_provider.dart';
 import 'basket_content.dart';
 import 'widgets/card_home_product.dart';
@@ -18,16 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final CounterBloc bloc;
+  late final BasketBloc bloc;
 
-  void getBasket(List<Product> productList) {
+  void getBasket() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BlocProvider<CounterBloc>(
-          create: (_) => CounterBloc(selectList: productList),
-          child: const BasketContent(),
-        ),
+        builder: (context) => const BasketContent(),
       ),
     );
   }
@@ -38,10 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Flutter bloc'),
         actions: [
-          BlocBuilder<CounterBloc, List<Product>>(
+          BlocBuilder<BasketBloc, List<Product>>(
             builder: (context, state) => MyBadge(
               count: state.length,
-              onPressed: () => getBasket(state),
+              onPressed: () => getBasket(),
             ),
           ),
         ],

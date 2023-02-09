@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/features.dart';
-import '../business/counter_bloc.dart';
+import '../business/product_list_bloc/basket_bloc.dart';
 import 'widgets/card_basket_product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +13,7 @@ class BasketContent extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Корзина'),
       ),
-      body: BlocBuilder<CounterBloc, List<Product>>(builder: (_, state) {
+      body: BlocBuilder<BasketBloc, List<Product>>(builder: (_, state) {
         final Set<Product> setProduct = state.toSet();
         return ListView.builder(
           itemCount: setProduct.length,

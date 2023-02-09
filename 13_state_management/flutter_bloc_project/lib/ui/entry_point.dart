@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../business/counter_bloc.dart';
+import '../business/counter_bloc/product_bloc.dart';
+import '../business/product_list_bloc/basket_bloc.dart';
 import 'home_screen.dart';
 
 class EntryPoint extends StatelessWidget {
@@ -9,8 +10,16 @@ class EntryPoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: BlocProvider<CounterBloc>(
-        create: (_) => CounterBloc(),
+      home:
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<ProductBloc>(
+            create: (_) => ProductBloc(),
+          ),
+          BlocProvider<BasketBloc>(
+            create: (_) => BasketBloc(),
+          ),
+        ],
         child: const HomeScreen(),
       ),
     );

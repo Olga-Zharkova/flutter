@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled1/features.dart';
 
-import '../../business/counter_bloc.dart';
-import '../../business/counter_event.dart';
+import '../../business/product_list_bloc/basket_bloc.dart';
+import '../../business/product_list_bloc/basket_event.dart';
 
 class CardBasketProduct extends StatefulWidget {
   final Product product;
@@ -21,11 +21,11 @@ class CardBasketProduct extends StatefulWidget {
 
 class _CardBasketProductState extends State<CardBasketProduct> {
   void incrementProduct(Product product) {
-    context.read<CounterBloc>().add(CounterIncrementPressed(product));
+    context.read<BasketBloc>().add(BasketIncrementPressed(product));
   }
 
   void decreaseProduct(Product product) {
-    context.read<CounterBloc>().add(CounterDecreasePressed(product));
+    context.read<BasketBloc>().add(BasketDecreasePressed(product));
   }
 
   @override
@@ -56,8 +56,9 @@ class _CardBasketProductState extends State<CardBasketProduct> {
                 ),
                 widget.count,
                 IconButton(
-                    onPressed: () => decreaseProduct(widget.product),
-                    icon: const Icon(Icons.remove)),
+                  onPressed: () => decreaseProduct(widget.product),
+                  icon: const Icon(Icons.remove),
+                ),
               ],
             ),
           ],
