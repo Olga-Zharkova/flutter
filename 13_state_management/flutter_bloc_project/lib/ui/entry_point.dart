@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../business/counter_bloc/product_bloc.dart';
+import '../business/product_bloc/product_bloc.dart';
 import '../business/product_list_bloc/basket_bloc.dart';
 import 'home_screen.dart';
 

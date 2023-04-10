@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/text_field_styled/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/text_field_styled/build" />
+      <excludeFolder url="file://$MODULE_DIR$/text_field_styled/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/horizontal_list/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/horizontal_list/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/horizontal_list/build" />
+      <excludeFolder url="file://$MODULE_DIR$/list_view_divider/build" />
+      <excludeFolder url="file://$MODULE_DIR$/list_view_divider/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/list_view_divider/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/sliver_widgets/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/sliver_widgets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/sliver_widgets/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
