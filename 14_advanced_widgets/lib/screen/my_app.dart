@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/screen/widgets/body_screen.dart';
 
 import '../resources/themes/theme_list.dart';
 import '../resources/themes/yellow_theme.dart';
+import 'widgets/body_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
