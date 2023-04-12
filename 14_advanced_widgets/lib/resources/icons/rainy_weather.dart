@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../resources/colors.dart';
+import 'mixin/cloud.dart';
 
-class RainyWeather extends CustomPainter {
+class RainyWeather extends CustomPainter with MixinCloud {
   final Color colorRainy;
   final Color colorCloudy;
   final double size;
@@ -16,17 +17,20 @@ class RainyWeather extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final ovalPaint = Paint()
-      ..color = colorCloudy
-      ..strokeWidth = 10
-      ..style = PaintingStyle.stroke
-      ..style = PaintingStyle.fill;
+    final path = Path()
+      ..moveTo(0, 0)
+      ..lineTo(size.height, 0)
+      ..lineTo(size.height, size.width)
+      ..lineTo(0, size.width)
+      ..lineTo(0, 0);
+    final paint = Paint()
+      ..color = Colors.blueGrey
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
+    canvas.drawPath(path, paint);
 
-    final a = Offset(0, this.size * 2 / 3);
-    final b = Offset(this.size * 3 / 2, this.size * 4 / 3);
-    final rect = Rect.fromPoints(a, b);
-    final radius = Radius.circular(this.size / 3);
-    canvas.drawRRect(RRect.fromRectAndRadius(rect, radius), ovalPaint);
+    paintCloud(canvas, this.size, colorCloudy, this.size / 3);
 
     final linePaint = Paint()
       ..color = colorRainy
