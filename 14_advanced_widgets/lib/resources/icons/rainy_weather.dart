@@ -17,53 +17,33 @@ class RainyWeather extends CustomPainter with MixinCloud {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(size.height, 0)
-      ..lineTo(size.height, size.width)
-      ..lineTo(0, size.width)
-      ..lineTo(0, 0);
+    paintCloud(canvas, size.height, colorCloudy);
+
+    final double mySize = size.height;
     final paint = Paint()
-      ..color = Colors.blueGrey
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
-    canvas.drawPath(path, paint);
-
-    paintCloud(canvas, this.size, colorCloudy, this.size / 3);
-
-    final linePaint = Paint()
       ..color = colorRainy
-      ..style = PaintingStyle.fill;
+      ..strokeWidth = mySize / 30
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
 
-    double widthRainy = 2;
-    double dx = this.size / 10;
-    double moveToY = this.size * 5 / 3;
-    double lineToY = this.size * 4 / 3 + widthRainy;
+    final double endDy = mySize * 0.9;
+    final double startDy = mySize * 0.75;
 
-    var line1 = Path()
-      ..moveTo(dx * 2, moveToY)
-      ..lineTo(dx * 3, lineToY)
-      ..lineTo(dx * 3 + widthRainy, lineToY + widthRainy)
-      ..close();
-
-    canvas.drawPath(line1, linePaint);
-
-    var line2 = Path()
-      ..moveTo(dx * 6, moveToY)
-      ..lineTo(dx * 7, lineToY)
-      ..lineTo(dx * 7 + widthRainy, lineToY + widthRainy)
-      ..close();
-
-    canvas.drawPath(line2, linePaint);
-
-    var line3 = Path()
-      ..moveTo(this.size, moveToY)
-      ..lineTo(dx * 11, lineToY)
-      ..lineTo(dx * 11 + widthRainy, lineToY + widthRainy)
-      ..close();
-
-    canvas.drawPath(line3, linePaint);
+    canvas.drawLine(
+      Offset(mySize * 0.3, startDy),
+      Offset(mySize * 0.25, endDy),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(mySize * 0.5, startDy),
+      Offset(mySize * 0.45, endDy),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(mySize * 0.7, startDy),
+      Offset(mySize * 0.65, endDy),
+      paint,
+    );
   }
 
   @override

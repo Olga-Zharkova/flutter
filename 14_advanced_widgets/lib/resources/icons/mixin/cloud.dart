@@ -5,22 +5,18 @@ mixin MixinCloud {
     Canvas canvas,
     double size,
     Color color,
-    double radius,
   ) {
-    final ovalPaint = Paint()
+    final paint = Paint()
       ..color = color
-      ..strokeWidth = 10
-      ..style = PaintingStyle.stroke
-      ..style = PaintingStyle.fill;
+      ..strokeWidth = size / 2.5
+      ..style = PaintingStyle.fill
+      ..strokeCap = StrokeCap.round;
+    final double dy = size / 2;
 
-    final a = Offset(0, size * 2 / 3);
-    final b = Offset(size * 3 / 2, size * 4 / 3);
-    final rect = Rect.fromPoints(a, b);
-    return canvas.drawRRect(
-        RRect.fromRectAndRadius(
-          rect,
-          Radius.circular(radius),
-        ),
-        ovalPaint);
+    return canvas.drawLine(
+      Offset(size * 0.25, dy),
+      Offset(size * 0.75, dy),
+      paint,
+    );
   }
 }
