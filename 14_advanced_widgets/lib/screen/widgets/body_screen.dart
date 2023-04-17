@@ -2,8 +2,9 @@ import 'package:advanced_widgets/resources/icons/cloudy_weather.dart';
 import 'package:advanced_widgets/resources/icons/sunny_weather.dart';
 import 'package:flutter/material.dart';
 
-import '../../resources/enum/weather_text.dart';
+import '../../resources/enums/weather_text.dart';
 import '../../resources/icons/rainy_weather.dart';
+import '../../resources/render_widgets/text_decoration.dart';
 
 class BodyScreen extends StatefulWidget {
   const BodyScreen({super.key});
@@ -114,9 +115,12 @@ class _BodyScreenState extends State<BodyScreen> {
                 ),
                 Visibility(
                   visible: isWeatherEnlargedWidget,
-                  child: Text(
-                    '$weatherText, $weatherNumber',
-                    style: const TextStyle(color: Colors.red),
+                  child: TextDecoration(
+                    color: Theme.of(context).cardColor,
+                    child: Text(
+                      '$weatherText, $weatherNumber',
+                      style: const TextStyle(color: Colors.red),
+                    ),
                   ),
                 ),
               ],
