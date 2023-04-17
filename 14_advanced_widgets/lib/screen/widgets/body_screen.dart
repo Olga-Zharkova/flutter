@@ -19,9 +19,11 @@ class _BodyScreenState extends State<BodyScreen> {
   late String weatherText;
   late int weatherNumber;
   late bool isWeatherEnlargedWidget;
+  late GlobalKey animatedContainerKey;
 
   @override
   void initState() {
+    animatedContainerKey = GlobalKey();
     indicator = 0.8;
     _getWeatherElement(indicator);
     weatherUnit = 0.2;
@@ -89,30 +91,36 @@ class _BodyScreenState extends State<BodyScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Container(
-          height: 300,
+        SizedBox(
+          height: 500,
           width: 300,
-          child: GestureDetector(
-            onTap: _changeWeatherSizeWidget,
-            child: AnimatedContainer(
-              curve:  Curves.ease,
-              alignment: _getAlignmentWeatherWidget(),
-              duration: const Duration(seconds: 2),
-              height: _getSizeWeatherWidget(),
-              width: _getSizeWeatherWidget(),
-              child: SizedBox(
-                height: _getSizeWeatherWidget(),
-                width: _getSizeWeatherWidget(),
-                child: widgetWeather,
-              ),
+          child: AnimatedContainer(
+            key: const Key('AnimatedContainer'),
+            curve: Curves.easeInOut,
+            alignment: _getAlignmentWeatherWidget(),
+            duration: const Duration(seconds: 2),
+            height: _getSizeWeatherWidget(),
+            width: _getSizeWeatherWidget(),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                GestureDetector(
+                  onTap: _changeWeatherSizeWidget,
+                  child: SizedBox(
+                    height: _getSizeWeatherWidget(),
+                    width: _getSizeWeatherWidget(),
+                    child: widgetWeather,
+                  ),
+                ),
+                Visibility(
+                  visible: isWeatherEnlargedWidget,
+                  child: Text(
+                    '$weatherText, $weatherNumber',
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ),
-        Visibility(
-          visible: isWeatherEnlargedWidget,
-          child: Text(
-            '$weatherText, $weatherNumber',
-            style: const TextStyle(color: Colors.red),
           ),
         ),
         Row(
