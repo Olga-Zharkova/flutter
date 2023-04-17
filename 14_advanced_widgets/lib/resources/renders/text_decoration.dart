@@ -30,17 +30,16 @@ class RenderTextBackground extends RenderProxyBox {
     if (child != null) {
       final double width = child!.size.width;
       final double height = child!.size.height;
-      final double strokeWidth = height / 3;
+      final double strokeWidth = height / 4;
       final paint = Paint()
         ..color = _color
         ..strokeWidth = strokeWidth
         ..style = PaintingStyle.stroke
-        ..strokeCap = StrokeCap.round;
-      final widthHalf = strokeWidth;
-      final double startDx = offset.dx - widthHalf;
-      final double endDx = offset.dx + width + widthHalf;
+        ..strokeCap = StrokeCap.square;
+      final double startDx = offset.dx - strokeWidth;
+      final double endDx = offset.dx + width + strokeWidth;
       final double endDy = offset.dy + height + strokeWidth;
-      final double startDy = offset.dy - height + strokeWidth;
+      final double startDy = offset.dy - strokeWidth;
       final path = Path()
         ..moveTo(startDx, startDy)
         ..lineTo(endDx, startDy)

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 import '../../resources/colors.dart';
 import 'mixin/cloud.dart';
+import 'mixin/rainy.dart';
 
-class RainyWeather extends CustomPainter with MixinCloud {
+class RainyWeather extends CustomPainter with MixinCloud, MixinRainy {
   final Color colorRainy;
   final Color colorCloudy;
   final double size;
@@ -19,31 +20,7 @@ class RainyWeather extends CustomPainter with MixinCloud {
   void paint(Canvas canvas, Size size) {
     paintCloud(canvas, size.height, colorCloudy);
 
-    final double mySize = size.height;
-    final paint = Paint()
-      ..color = colorRainy
-      ..strokeWidth = mySize / 30
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
-
-    final double endDy = mySize * 0.9;
-    final double startDy = mySize * 0.75;
-
-    canvas.drawLine(
-      Offset(mySize * 0.3, startDy),
-      Offset(mySize * 0.25, endDy),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(mySize * 0.5, startDy),
-      Offset(mySize * 0.45, endDy),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(mySize * 0.7, startDy),
-      Offset(mySize * 0.65, endDy),
-      paint,
-    );
+    paintRainy(canvas, size.height, colorRainy);
   }
 
   @override
