@@ -117,9 +117,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ),
               ),
               if (_isLoading)
-                const Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: CircularProgressIndicator(),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).indicatorColor,
+                  ),
                 ),
               Expanded(
                 child: GridView.count(
@@ -169,7 +171,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         selected: item['isSelect'],
                         label: Text(
                           item['name'],
-                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ),
                     )
@@ -216,9 +217,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           );
                         });
                   },
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     radius: 40,
-                    child: Text('AB'),
+                    backgroundColor: Theme.of(context).cardColor,
+                    child: Text(
+                      'AB',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ),
               ],

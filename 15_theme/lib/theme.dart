@@ -6,11 +6,14 @@ ThemeData themeLight = _themeLight.copyWith(
   textTheme: _textLight(_themeLight.textTheme),
   appBarTheme: _appBarLight(_themeLight.appBarTheme),
   navigationBarTheme: _navigationBarLight(_themeLight.navigationBarTheme),
-  bottomNavigationBarTheme:
-      _bottomNavigationBarLight(_themeLight.bottomNavigationBarTheme),
+  bottomNavigationBarTheme: _bottomNavigationBarLight(
+    _themeLight.bottomNavigationBarTheme,
+  ),
+  chipTheme: _chipLight(_themeLight.chipTheme),
   cardColor: firstColor,
   focusColor: Colors.red,
   hoverColor: secondColor,
+  indicatorColor: secondColor,
   colorScheme: ColorScheme(
     background: secondColor,
     primary: firstColor,
@@ -32,7 +35,7 @@ ThemeData themeLight = _themeLight.copyWith(
 TextTheme _textLight(TextTheme base) {
   return base.copyWith(
     bodyLarge: TextStyle(color: secondColor),
-    bodySmall: const TextStyle(color: Colors.white),
+    bodySmall: const TextStyle(color: Colors.white, fontSize: 22),
   );
 }
 
@@ -40,6 +43,20 @@ AppBarTheme _appBarLight(AppBarTheme base) {
   return base.copyWith(
     backgroundColor: secondColor,
   );
+}
+
+ChipThemeData _chipLight(ChipThemeData base) {
+  return base.copyWith(
+    selectedColor: firstColor,
+    backgroundColor: secondColor,
+    checkmarkColor: Colors.white,
+    labelStyle: _chipLightLabelStyle(base.labelStyle),
+  );
+}
+
+TextStyle _chipLightLabelStyle(TextStyle? textStyle) {
+  const Color color = Colors.white;
+  return textStyle?.copyWith(color: color) ?? const TextStyle(color: color);
 }
 
 BottomNavigationBarThemeData _bottomNavigationBarLight(
